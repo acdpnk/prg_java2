@@ -44,6 +44,7 @@ public abstract class BasicSimulator {
 	void refreshQueueLength(){
 		double time = getCurrentSimTime() - getLastProbeTime();
 		currentQueueLength += entity.getState()*time;
+		setLastProbeTime(getCurrentSimTime());
 	}
 
 	abstract void init();
