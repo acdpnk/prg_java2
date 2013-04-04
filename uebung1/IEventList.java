@@ -1,6 +1,6 @@
 public interface IEventList{
 	void putAway (IEvent newEvent);
-	IEvent next();
+	IEvent nextEvent();
 	void removeFirstEvent();
 	boolean hasContent();
 }
