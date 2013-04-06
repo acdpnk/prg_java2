@@ -1,9 +1,9 @@
 public abstract class BasicSimulator {
-	private double currentSimTime;
-	private double currentQueueLength;
-	private double lastProbeTime;
-	private IEventList events;
-	private ISimulationEntity entity;
+	protected double currentSimTime;
+	protected double currentQueueLength = 0;
+	protected double lastProbeTime;
+	protected IEventList events;
+	protected ISimulationEntity entity;
 
 	void setCurrentSimTime(double time){
 		currentSimTime = time;
