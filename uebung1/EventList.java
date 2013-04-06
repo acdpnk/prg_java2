@@ -7,8 +7,8 @@ public class EventList implements IEventList {
 			tail.setEvent(newEvent);
 		}
 		else {
-			tail.setNext(new EventListNode);
-			tail.next.setEvent(newEvent);
+			tail.setNext(new EventListNode());
+			tail.setNextEvent(newEvent);
 		}
 	};
 	public IEvent nextEvent(){

@@ -15,4 +15,7 @@ public class EventListNode {
 	public void setNext(EventListNode node){
 		next = node;
 	}
+	public void setNextEvent(IEvent event){
+		next.setEvent(event);
+	}
 }
