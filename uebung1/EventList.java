@@ -1,33 +1,30 @@
 public class EventList implements IEventList {
-	private EventListNode root = new EventListNode();
+	private EventListNode head = new EventListNode();
+	private EventListNode tail = head;
 
 	public void putAway (IEvent newEvent){
-		putAway(newEvent, root);
+		if (tail.getEvent() == null) {
+			tail.setEvent(newEvent);
+		}
+		else {
+			tail.setNext(new EventListNode);
+			tail.next.setEvent(newEvent);
+		}
 	};
-	private void putAway(IEvent newEvent, EventListNode node){
-		if (node.getEvent() == null) {
-			node.setEvent(newEvent);
-			return;
-		}
-		if (node.getNext() == null) {
-			node.setNext(new EventListNode());
-		}
-		putAway(newEvent, node.getNext());
-	}
 	public IEvent nextEvent(){
-		if (root.getEvent() != null) {
-			return root.getEvent();
+		if (head.getEvent() != null) {
+			return head.getEvent();
 		}
 		return null;
 	};
 	public void removeFirstEvent(){
-		if (root.getNext() != null) {
-			root = root.getNext();
+		if (head.getNext() != null) {
+			head = head.getNext();
 		} else{
-			root = new EventListNode();
+			head = new EventListNode();
 		}
 	};
 	public boolean hasContent(){
-		return root.getEvent() != null ? true : false;
+		return head.getEvent() != null ? true : false;
 	};
 }
