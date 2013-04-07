@@ -1,21 +1,21 @@
 public abstract class BasicSimulator {
-	protected double currentSimTime;
-	protected double currentQueueLength = 0;
-	protected double lastProbeTime;
+	protected int currentSimTime;
+	protected int currentQueueLength = 0;
+	protected int lastProbeTime;
 	protected IEventList events;
 	protected ISimulationEntity entity;
 
-	void setCurrentSimTime(double time){
+	void setCurrentSimTime(int time){
 		currentSimTime = time;
 	}
-	double getCurrentSimTime(){
+	int getCurrentSimTime(){
 		return currentSimTime;
 	}
 
-	void setLastProbeTime(double time){
+	void setLastProbeTime(int time){
 		lastProbeTime = time;
 	}
-	double getLastProbeTime(){
+	int getLastProbeTime(){
 		return lastProbeTime;
 	}
 
@@ -42,7 +42,7 @@ public abstract class BasicSimulator {
 	}
 
 	void refreshQueueLength(){
-		double time = getCurrentSimTime() - getLastProbeTime();
+		int time = getCurrentSimTime() - getLastProbeTime();
 		currentQueueLength += entity.getState()*time;
 		setLastProbeTime(getCurrentSimTime());
 	}
