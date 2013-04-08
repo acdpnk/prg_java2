@@ -1,7 +1,7 @@
 public class Arrival implements IEvent {
 	private int execTime;
 
-	public Arrival(int execTime){
+	protected Arrival(int execTime){
 		this.execTime=execTime;
 	}
 

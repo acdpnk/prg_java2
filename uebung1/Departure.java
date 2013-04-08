@@ -1,7 +1,7 @@
 public class Departure implements IEvent {
 	private int execTime;
 
-	public Departure(int execTime){
+	protected Departure(int execTime){
 		this.execTime=execTime;
 	}
 
