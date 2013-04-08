@@ -6,8 +6,7 @@ public class EventList implements IEventList {
 			putAway(head, newEvent);
 			return;
 		}
-		head=new EventListNode();	//might want to change this to
-		head.setEvent(newEvent);	//head=new EventListNode(newEvent);
+		head=new EventListNode(newEvent);
 	}
 	private void putAway(EventListNode node, IEvent newEvent){
 		System.out.println("foo");
