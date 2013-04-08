@@ -1,6 +1,6 @@
 public abstract class BasicSimulator {
 	protected int currentSimTime;
-	protected int currentQueueLength = 0;
+	protected int currentQueueLength;
 	protected int lastProbeTime;
 	protected IEventList events;
 	protected ISimulationEntity entity;
