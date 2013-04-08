@@ -1,4 +1,6 @@
 public class EventList implements IEventList {
+	//note to self: this would have been way easier if i had implemented it as an array. there are never more than three elements in this "list". well.
+
 	private EventListNode head;
 
 	public void putAway (IEvent newEvent){
