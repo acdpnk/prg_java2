@@ -9,7 +9,18 @@ public class EventList implements IEventList {
 		head=new EventListNode(newEvent);
 	}
 	private void putAway(EventListNode node, IEvent newEvent){
-		System.out.println("foo");
+		// we know head is not empty, otherwise this function would not have been called
+		if (node.getEvent().getExecTime() <= newEvent.getExecTime()) {
+			EventListNode displacedNode = node;
+			node = new EventListNode(newEvent);
+			node.setNext(displacedNode);
+		}
+		else if (node.getNext()==null) {
+			node.setNext(new EventListNode(newEvent));
+		}
+		else{
+			putAway(node.getNext(), newEvent);
+		}
 	}
 	public IEvent nextEvent(){
 		if (hasContent()) {
