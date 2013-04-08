@@ -12,6 +12,13 @@ public abstract class BasicSimulator {
 		return currentSimTime;
 	}
 
+	void setCurrentQueueLength(int length){
+		currentQueueLength = length;
+	}
+	int getCurrentQueueLength(){
+		return currentQueueLength;
+	}
+
 	void setLastProbeTime(int time){
 		lastProbeTime = time;
 	}
