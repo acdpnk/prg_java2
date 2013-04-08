@@ -27,7 +27,7 @@ public class Simulator extends BasicSimulator {
 			setCurrentSimTime(event.getExecTime());
 			refreshQueueLength();
 			event.eventExec(this);
-			System.out.println("Iteration:       " + iterations + "\nSimulation Time: " + getCurrentSimTime() + "\nWaiting Jobs:    " + getSimulationEntity().getState() + "\nQueue Length:    " + getCurrentQueueLength() + "\n");
+			System.out.println("Iteration:       " + iterations + "\nSimulation Time: " + getCurrentSimTime() + "\nWaiting Jobs:    " + getSimulationEntity().getState() + "\nQueue Length:    " + ((double)getCurrentQueueLength() / (double)getCurrentSimTime()) + "\n");
 		}
 		System.out.println("Average Queue Length over whole simulation: " + ((double)getCurrentQueueLength() / (double)getCurrentSimTime()));
 	}

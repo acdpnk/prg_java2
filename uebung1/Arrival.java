@@ -6,7 +6,7 @@ public class Arrival implements IEvent {
 	}
 
 	public void eventExec(BasicSimulator simulator){
-		System.out.println("Arrival\n");
+		System.out.println("Arrival");
 		simulator.entity.setState(simulator.entity.getState()+1);
 		int arrivalTime = simulator.getCurrentSimTime() + (int)(Math.random()*10) + 1;
 		simulator.events.putAway(new Arrival(arrivalTime));

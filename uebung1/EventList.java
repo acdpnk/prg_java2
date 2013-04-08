@@ -12,7 +12,7 @@ public class EventList implements IEventList {
 	}
 	private void putAway(EventListNode node, IEvent newEvent){
 		// we know head is not empty, otherwise this function would not have been called
-		if (node.getEvent().getExecTime() <= newEvent.getExecTime()) {
+		if (node.getEvent().getExecTime() >= newEvent.getExecTime()) {
 			EventListNode displacedNode = node;
 			node = new EventListNode(newEvent);
 			node.setNext(displacedNode);
