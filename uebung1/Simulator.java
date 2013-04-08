@@ -20,7 +20,7 @@ public class Simulator extends BasicSimulator {
 		events.putAway(new Arrival(0));
 	}
 	public void run(){
-		while(getCurrentSimTime() < getSimulationEnd() && events.hasContent()){
+		while(events.hasContent() && events.nextEvent().getExecTime() < getSimulationEnd()){
 			iterations++;
 			IEvent event = events.nextEvent();
 			events.removeFirstEvent();
