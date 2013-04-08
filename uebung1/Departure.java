@@ -7,10 +7,10 @@ public class Departure implements IEvent {
 
 	public void eventExec(BasicSimulator simulator){
 		System.out.println("Departure\n");
-		simulator.entity.setState(simulator.entity.getState()-1);
 		if(simulator.entity.getState() > 0){
 			simulator.events.putAway(new Departure(simulator.getCurrentSimTime() + (int)(Math.random()*6) + 1));
 		}
+		simulator.entity.setState(simulator.entity.getState()-1);
 	}
 	public int getExecTime(){
 		return execTime;
