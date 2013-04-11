@@ -1,4 +1,4 @@
-public class Departure implements IEvent {
+public class Departure extends Event {
 	private int execTime;
 
 	protected Departure(int execTime){

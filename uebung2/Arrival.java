@@ -1,4 +1,4 @@
-public class Arrival implements IEvent {
+public class Arrival extends Event {
 	private int execTime;
 
 	protected Arrival(int execTime){
