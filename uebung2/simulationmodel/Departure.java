@@ -12,13 +12,13 @@ public class Departure extends Event {
 	}
 
 	public void eventExec(simulatorcore.BasicSimulator simulator){
-		if(verbose) System.out.println("Departure at " + getExecTime());
-		if(simulator.getSimulationEntity().getState() > 1){
+		if(verbose) System.out.println("\n\nDeparture at " + getExecTime());
+		if(simulator.getSimulationEntity(0).getState() > 1){
 			double departureTime = simulator.getCurrentSimTime() + (Math.random()*6) + 1;
 			simulator.getEventList().putAway(new Departure(departureTime, verbose));
-			if(verbose) System.out.println("added Departure to Queue at " + departureTime);
+			if(verbose) System.out.println("adding new Departure to Queue at " + departureTime);
 		}
-		simulator.getSimulationEntity().setState(simulator.getSimulationEntity().getState()-1);
+		simulator.getSimulationEntity(0).setState(simulator.getSimulationEntity(0).getState()-1);
 	}
 	public double getExecTime(){
 		return execTime;
