@@ -2,10 +2,22 @@ package simulatorcore;
 import simulationmodel.*;
 public abstract class BasicSimulator {
 	protected double currentSimTime;
-	protected double currentQueueLength;
 	protected double lastProbeTime;
 	protected IEventList events;
-	protected ISimulationEntity entity;
+
+	protected int numberOfEntities;
+	protected double[] currentQueueLength;
+	protected ISimulationEntity[] entity;
+
+	protected BasicSimulator(int numberOfEntities){
+		this.numberOfEntities = numberOfEntities;
+		currentQueueLength = new double[numberOfEntities];
+		entity = new ISimulationEntity[numberOfEntities];
+	}
+
+	protected int getNumberOfEntities(){
+		return numberOfEntities;
+	}
 
 	void setCurrentSimTime(double time){
 		currentSimTime = time;
@@ -14,11 +26,11 @@ public abstract class BasicSimulator {
 		return currentSimTime;
 	}
 
-	void setCurrentQueueLength(double length){
-		currentQueueLength = length;
+	void setCurrentQueueLength(int entityNumber, double length){
+		currentQueueLength[entityNumber] = length;
 	}
-	public double getCurrentQueueLength(){
-		return currentQueueLength;
+	public double getCurrentQueueLength(int entityNumber){
+		return currentQueueLength[entityNumber];
 	}
 
 	void setLastProbeTime(double time){
@@ -35,11 +47,11 @@ public abstract class BasicSimulator {
 		return events;
 	}
 
-	void setSimulationEntity(ISimulationEntity entity){
-		this.entity = entity;
+	void setSimulationEntity(int entityNumber, ISimulationEntity entity){
+		this.entity[entityNumber] = entity;
 	}
-	public ISimulationEntity getSimulationEntity(){
-		return this.entity;
+	public ISimulationEntity getSimulationEntity(int entityNumber){
+		return this.entity[entityNumber];
 	}
 
 	void removeFirstEvent(){
@@ -50,9 +62,9 @@ public abstract class BasicSimulator {
 		events.putAway(event);
 	}
 
-	void refreshQueueLength(){
+	void refreshQueueLength(int entityNumber){
 		double time = getCurrentSimTime() - getLastProbeTime();
-		currentQueueLength += entity.getState()*time;
+		currentQueueLength[entityNumber] += entity[entityNumber].getState()*time;
 		setLastProbeTime(getCurrentSimTime());
 	}
 

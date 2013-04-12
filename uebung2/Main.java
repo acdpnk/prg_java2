@@ -1,4 +1,6 @@
 public class Main{
+	public static final int NUMBER_OF_QUEUES = 1;
+
 	public static void main(String[] args) {
 		boolean verbose=false;
 		for (String arg : args) {
@@ -16,7 +18,7 @@ public class Main{
 			i++;
 		}
 
-		simulatorcore.Simulator simulator = new simulatorcore.Simulator(simulationEnd, verbose);
+		simulatorcore.Simulator simulator = new simulatorcore.Simulator(NUMBER_OF_QUEUES, simulationEnd, verbose);
 		simulator.init();
 		simulator.run();
 	}
