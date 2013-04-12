@@ -2,11 +2,17 @@ package simulatorcore;
 import simulationmodel.*;
 public class Simulator extends BasicSimulator {
 
+	private boolean verbose;
 	private double simulationEnd;
 	private int iterations;
 
-	public Simulator(double end){
+	public Simulator(double end, boolean verboseness){
 		simulationEnd = end;
+		verbose = verboseness;
+	}
+
+	public Simulator(double end){
+		this(end, false);
 	}
 
 	public double getSimulationEnd(){
@@ -19,7 +25,7 @@ public class Simulator extends BasicSimulator {
 		setLastProbeTime(0);
 		setSimulationEntity(new Queue());
 		events = new EventListPQ();
-		events.putAway(new Arrival(0));
+		events.putAway(new Arrival(0, verbose));
 	}
 	public void run(){
 		while(events.hasContent() && events.nextEvent().getExecTime() < getSimulationEnd()){
@@ -29,7 +35,7 @@ public class Simulator extends BasicSimulator {
 			setCurrentSimTime(event.getExecTime());
 			refreshQueueLength();
 			event.eventExec(this);
-			System.out.println("Iteration:       " + iterations + "\nSimulation Time: " + getCurrentSimTime() + "\nWaiting Jobs:    " + getSimulationEntity().getState() + "\nQueue Length:    " + (getCurrentQueueLength() / getCurrentSimTime()) + "\n");
+			if(verbose) System.out.println("Iteration:       " + iterations + "\nSimulation Time: " + getCurrentSimTime() + "\nWaiting Jobs:    " + getSimulationEntity().getState() + "\nQueue Length:    " + (getCurrentQueueLength() / getCurrentSimTime()) + "\n");
 		}
 		System.out.println("Average Queue Length over whole simulation: " + (getCurrentQueueLength() / getCurrentSimTime()));
 	}
