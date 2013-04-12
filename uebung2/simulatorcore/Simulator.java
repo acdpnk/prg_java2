@@ -2,14 +2,14 @@ package simulatorcore;
 import simulationmodel.*;
 public class Simulator extends BasicSimulator {
 
-	private int simulationEnd;
+	private double simulationEnd;
 	private int iterations;
 
-	public Simulator(int end){
+	public Simulator(double end){
 		simulationEnd = end;
 	}
 
-	public int getSimulationEnd(){
+	public double getSimulationEnd(){
 		return simulationEnd;
 	}
 
@@ -29,9 +29,9 @@ public class Simulator extends BasicSimulator {
 			setCurrentSimTime(event.getExecTime());
 			refreshQueueLength();
 			event.eventExec(this);
-			System.out.println("Iteration:       " + iterations + "\nSimulation Time: " + getCurrentSimTime() + "\nWaiting Jobs:    " + getSimulationEntity().getState() + "\nQueue Length:    " + ((double)getCurrentQueueLength() / (double)getCurrentSimTime()) + "\n");
+			System.out.println("Iteration:       " + iterations + "\nSimulation Time: " + getCurrentSimTime() + "\nWaiting Jobs:    " + getSimulationEntity().getState() + "\nQueue Length:    " + (getCurrentQueueLength() / getCurrentSimTime()) + "\n");
 		}
-		System.out.println("Average Queue Length over whole simulation: " + ((double)getCurrentQueueLength() / (double)getCurrentSimTime()));
+		System.out.println("Average Queue Length over whole simulation: " + (getCurrentQueueLength() / getCurrentSimTime()));
 	}
 
 }

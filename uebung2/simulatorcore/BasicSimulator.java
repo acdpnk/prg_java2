@@ -1,30 +1,30 @@
 package simulatorcore;
 import simulationmodel.*;
 public abstract class BasicSimulator {
-	protected int currentSimTime;
-	protected int currentQueueLength;
-	protected int lastProbeTime;
+	protected double currentSimTime;
+	protected double currentQueueLength;
+	protected double lastProbeTime;
 	protected IEventList events;
 	protected ISimulationEntity entity;
 
-	void setCurrentSimTime(int time){
+	void setCurrentSimTime(double time){
 		currentSimTime = time;
 	}
-	public int getCurrentSimTime(){
+	public double getCurrentSimTime(){
 		return currentSimTime;
 	}
 
-	void setCurrentQueueLength(int length){
+	void setCurrentQueueLength(double length){
 		currentQueueLength = length;
 	}
-	public int getCurrentQueueLength(){
+	public double getCurrentQueueLength(){
 		return currentQueueLength;
 	}
 
-	void setLastProbeTime(int time){
+	void setLastProbeTime(double time){
 		lastProbeTime = time;
 	}
-	public int getLastProbeTime(){
+	public double getLastProbeTime(){
 		return lastProbeTime;
 	}
 
@@ -51,7 +51,7 @@ public abstract class BasicSimulator {
 	}
 
 	void refreshQueueLength(){
-		int time = getCurrentSimTime() - getLastProbeTime();
+		double time = getCurrentSimTime() - getLastProbeTime();
 		currentQueueLength += entity.getState()*time;
 		setLastProbeTime(getCurrentSimTime());
 	}
