@@ -1,3 +1,4 @@
+package simulationmodel;
 public class Queue implements ISimulationEntity{
 	private int jobs;
 

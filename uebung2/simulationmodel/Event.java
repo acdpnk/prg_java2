@@ -1,3 +1,4 @@
+package simulationmodel;
 public abstract class Event implements IEvent, Comparable<IEvent>{
 	public int compareTo(IEvent event){
 		if (this.getExecTime()>event.getExecTime()) {

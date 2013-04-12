@@ -1,3 +1,5 @@
+package simulatorcore;
+import simulationmodel.*;
 public interface IEventList{
 	void putAway (IEvent newEvent);
 	IEvent nextEvent();

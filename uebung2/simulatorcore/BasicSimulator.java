@@ -1,3 +1,5 @@
+package simulatorcore;
+import simulationmodel.*;
 public abstract class BasicSimulator {
 	protected int currentSimTime;
 	protected int currentQueueLength;
@@ -8,35 +10,35 @@ public abstract class BasicSimulator {
 	void setCurrentSimTime(int time){
 		currentSimTime = time;
 	}
-	int getCurrentSimTime(){
+	public int getCurrentSimTime(){
 		return currentSimTime;
 	}
 
 	void setCurrentQueueLength(int length){
 		currentQueueLength = length;
 	}
-	int getCurrentQueueLength(){
+	public int getCurrentQueueLength(){
 		return currentQueueLength;
 	}
 
 	void setLastProbeTime(int time){
 		lastProbeTime = time;
 	}
-	int getLastProbeTime(){
+	public int getLastProbeTime(){
 		return lastProbeTime;
 	}
 
-	void setEventlist(IEventList list){
+	void setEventList(IEventList list){
 		events = list;
 	}
-	IEventList getEventlist(){
+	public IEventList getEventList(){
 		return events;
 	}
 
 	void setSimulationEntity(ISimulationEntity entity){
 		this.entity = entity;
 	}
-	ISimulationEntity getSimulationEntity(){
+	public ISimulationEntity getSimulationEntity(){
 		return this.entity;
 	}
 

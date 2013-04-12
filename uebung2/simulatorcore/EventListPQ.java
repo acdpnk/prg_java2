@@ -1,4 +1,6 @@
+package simulatorcore;
 import java.util.PriorityQueue;
+import simulationmodel.*;
 
 public class EventListPQ implements IEventList{
 private PriorityQueue<IEvent> events = new PriorityQueue<IEvent>();

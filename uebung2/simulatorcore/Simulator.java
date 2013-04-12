@@ -1,3 +1,5 @@
+package simulatorcore;
+import simulationmodel.*;
 public class Simulator extends BasicSimulator {
 
 	private int simulationEnd;
