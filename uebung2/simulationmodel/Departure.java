@@ -19,6 +19,7 @@ public class Departure extends Event {
 			if(verbose) System.out.println("adding new Departure to Queue at " + departureTime);
 		}
 		simulator.getSimulationEntity(0).setState(simulator.getSimulationEntity(0).getState()-1);
+		simulator.setCompletedJobs(simulator.getCompletedJobs()+1);
 	}
 	public double getExecTime(){
 		return execTime;

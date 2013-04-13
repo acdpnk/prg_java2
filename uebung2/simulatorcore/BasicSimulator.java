@@ -1,9 +1,11 @@
 package simulatorcore;
 import simulationmodel.*;
+
 public abstract class BasicSimulator {
 	protected double currentSimTime;
 	protected double lastProbeTime;
 	protected IEventList events;
+	protected int completedJobs;
 
 	protected int numberOfEntities;
 	protected double[] currentQueueLength;
@@ -66,6 +68,13 @@ public abstract class BasicSimulator {
 		double time = getCurrentSimTime() - getLastProbeTime();
 		currentQueueLength[entityNumber] += entity[entityNumber].getState()*time;
 		setLastProbeTime(getCurrentSimTime());
+	}
+
+	public void setCompletedJobs(int jobs){
+		this.completedJobs=jobs;
+	}
+	public int getCompletedJobs(){
+		return this.completedJobs;
 	}
 
 	abstract void init();

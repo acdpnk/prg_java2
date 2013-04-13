@@ -23,6 +23,7 @@ public class Simulator extends BasicSimulator {
 	public void init(){
 		setCurrentSimTime(0);
 		setLastProbeTime(0);
+		setCompletedJobs(0);
 		events = new EventListPQ();
 		events.putAway(new Arrival(0, verbose));
 		for(int i=0; i!=getNumberOfEntities(); i++){
@@ -47,9 +48,9 @@ public class Simulator extends BasicSimulator {
 				}
 			}
 		}
-		System.out.println("\n\nDone.\nAverage Queue Lengths over whole simulation: ");
+		System.out.println("\n\nDone.\n\nTime: " + getSimulationEnd() + "\nCompleted Jobs: " + getCompletedJobs() + "\n\nAverage Queue Lengths over whole simulation: ");
 		for (int i=0; i<getNumberOfEntities(); i++) {
-		 	System.out.println("Queue" + i + ": " + (getCurrentQueueLength(0) / getCurrentSimTime()));
+		 	System.out.println("Queue" + i + ": " + (getCurrentQueueLength(i) / getCurrentSimTime()));
 		 }
 	}
 
