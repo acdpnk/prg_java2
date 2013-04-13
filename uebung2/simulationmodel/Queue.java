@@ -1,5 +1,5 @@
 package simulationmodel;
-public class Queue implements ISimulationEntity{
+public class Queue implements ISimulationEntity, Comparable<ISimulationEntity>{
 	private int jobs;
 
 	public int getState(){
@@ -8,5 +8,11 @@ public class Queue implements ISimulationEntity{
 
 	public void setState(int newState){
 		jobs=newState;
+	}
+
+	public int compareTo(ISimulationEntity entity){
+		if(this.getState()>entity.getState()) return 1;
+		else if(this.getState()<entity.getState()) return -1;
+		else return 0;
 	}
 }

@@ -17,8 +17,16 @@ public abstract class BasicSimulator {
 		entity = new ISimulationEntity[numberOfEntities];
 	}
 
-	protected int getNumberOfEntities(){
+	public int getNumberOfEntities(){
 		return numberOfEntities;
+	}
+
+	public int getShortestEntityID(){
+		int shortestEntityID=0;
+		for (int i=0; i<entity.length; i++) {
+			if(getSimulationEntity(shortestEntityID).compareTo(getSimulationEntity(i))>0) shortestEntityID=i;
+		}
+		return shortestEntityID;
 	}
 
 	void setCurrentSimTime(double time){
@@ -64,9 +72,11 @@ public abstract class BasicSimulator {
 		events.putAway(event);
 	}
 
-	void refreshQueueLength(int entityNumber){
+	void refreshQueueLength(){
 		double time = getCurrentSimTime() - getLastProbeTime();
-		currentQueueLength[entityNumber] += entity[entityNumber].getState()*time;
+		for (int i=0; i<getNumberOfEntities(); i++){
+			currentQueueLength[i] += entity[i].getState()*time;
+		}
 		setLastProbeTime(getCurrentSimTime());
 	}
 
