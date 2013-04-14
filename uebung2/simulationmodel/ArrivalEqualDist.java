@@ -1,5 +1,14 @@
 package simulationmodel;
+/**
+ * Arrival for multi queue simulations. Arrivals are distributed randomly between queues. (AnkunftGleichVerteilt)
+ */
 public class ArrivalEqualDist extends Arrival{
+	/**
+	 * constructor for ArrivalEqualDist
+	 * @param  simulator   the simulator to be affected (used to determine the number of queues present)
+	 * @param  execTime    the Arrivals execution time
+	 * @param  verboseness prints debug info if true
+	 */
 	public ArrivalEqualDist(simulatorcore.BasicSimulator simulator, double execTime, boolean verboseness){
 		super((int)(Math.random()*simulator.getNumberOfEntities()), execTime, verboseness);
 	}

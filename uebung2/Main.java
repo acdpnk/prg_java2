@@ -1,13 +1,34 @@
+/**
+ * contains main method, entry point for the program.
+ */
 public class Main{
 
-	/*
-	 * Standard values for optional commandline arguments
+	//default values for optional commandline arguments
+	/**
+	 * contains default value for number of queues
 	 */
 	public static final int NUMBER_OF_QUEUES = 2;
+	/**
+	 * contains default value for verboseness
+	 */
 	public static final boolean VERBOSE = false;
+	/**
+	 * contains default value for simulation end
+	 */
 	public static final double SIMULATION_END = 100;
+	/**
+	 * contains default value for mode
+	 */
 	public static final int MODE = 0; // equal distribution
 
+	/**
+	 * Initializes and starts the simulation.
+	 * @param  args accepts<br>
+	 * -v (verbose mode, default is silent)<br>
+	 * -n <b>int</b> (number of queues is <b>int</b>, default is 2)<br>
+	 * -t <b>double</b> (simulation ends at time <b>double</b>, default is 100)<br>
+	 * -m <b><0|1></b> (simulation runs in mode <b>0</b> (Equal Distribution: arrivals are randomly distributed over all queues) or <b>1</b> (Shortest: arrivals are added to the shortest queue), default is 0)
+	 */
 	public static void main(String[] args) {
 		boolean verbose=VERBOSE;
 		for (String arg : args) {

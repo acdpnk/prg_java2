@@ -1,12 +1,35 @@
 package simulatorcore;
 import simulationmodel.*;
+/**
+ * a simulator
+ */
 public class Simulator extends BasicSimulator {
-
+	/**
+	 * print debog information if true (is passed on to all other methods and classes employed)
+	 */
 	private boolean verbose;
+	/**
+	 * time at which the simulation should end
+	 */
 	private double simulationEnd;
+	/**
+	 * number of cycles the simulation has run
+	 */
 	private int iterations;
+	/**
+	 * simulation mode.<br>
+	 * 0 means new Arrivals are distributed randomly between queues.<br>
+	 * 1 means new Arrivals are always added to the shortest queue present, or the one with the lowest id in case of a tie.
+	 */
 	private int mode; // 0=Equal Distribution; 1=Shortest
 
+/**
+ * constructor for the simulator
+ * @param  numberOfQueues the number of queues to simulate
+ * @param  end            the end time of the simulation
+ * @param  verboseness    prints additional debug info if true
+ * @param  mode           0: Arrivals are distributed randomly, 1: Arrivals are added to shortest queue
+ */
 	public Simulator(int numberOfQueues, double end, boolean verboseness, int mode){
 		super(numberOfQueues);
 		simulationEnd = end;
@@ -14,18 +37,25 @@ public class Simulator extends BasicSimulator {
 		this.mode=mode;
 	}
 
-	public Simulator(int numberOfQueues, double end){
-		this(numberOfQueues, end, false, 0);
-	}
-
+	/**
+	 * getter for the simulation endpoint
+	 * @return the simulations max runtime
+	 */
 	public double getSimulationEnd(){
 		return simulationEnd;
 	}
 
+	/**
+	 * getter for the simulation's mode
+	 * @return the simulation's mode. 0: equal distribution, 1: shortest
+	 */
 	public int getMode(){
 		return mode;
 	}
 
+	/**
+	 * initialize the simulator
+	 */
 	public void init(){
 		setCurrentSimTime(0);
 		setLastProbeTime(0);
@@ -44,6 +74,10 @@ public class Simulator extends BasicSimulator {
 			System.out.println("Mode: Shortest");
 		}
 	}
+
+	/**
+	 * run the simulation
+	 */
 	public void run(){
 		while(events.hasContent() && events.nextEvent().getExecTime() < getSimulationEnd()){
 			iterations++;
