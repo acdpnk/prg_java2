@@ -1,42 +1,41 @@
-
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class EventList implements IEventList {
-	
-	private List<IEvent> list;
-	
-	public EventList() {
-		list = new ArrayList<IEvent>();
-	}
+	//note to self: this would have been way easier if i had implemented it as an array. there are never more than three elements in this "list". well.
 
-	public void putAway(IEvent newEvent) {
-		if (list.isEmpty()) { // Sonderfall
-			list.add(0,newEvent);
+	private EventListNode head;
+
+	public void putAway (IEvent newEvent){
+		if(hasContent()){
+			putAway(head, newEvent);
 			return;
 		}
-		int i=0;
-		for (IEvent o : list) {
-			if (newEvent.getExecTime()<o.getExecTime()) {
-				list.add(i, newEvent);
-				return;
-			}
-			i++;
+		head=new EventListNode(newEvent);
+	}
+	private void putAway(EventListNode node, IEvent newEvent){
+		// we know head is not empty, otherwise this function would not have been called
+		if (node.getEvent().getExecTime() >= newEvent.getExecTime()) {
+			EventListNode displacedNode = node;
+			node = new EventListNode(newEvent);
+			node.setNext(displacedNode);
 		}
-		list.add(newEvent);
+		else if (node.getNext()==null) {
+			node.setNext(new EventListNode(newEvent));
+		}
+		else{
+			putAway(node.getNext(), newEvent);
+		}
 	}
-
-	public void removeFirstEvent() {
-		list.remove(0);
+	public IEvent nextEvent(){
+		if (hasContent()) {
+			return head.getEvent();
+		}
+		return null;
 	}
-
-	public boolean hasContent() {
-		return !list.isEmpty();
+	public void removeFirstEvent(){
+		if (hasContent()) {
+			head=head.getNext();
+		}
 	}
-
-	public IEvent nextEvent() {
-		return hasContent() ? list.get(0) : null;
+	public boolean hasContent(){
+		return head != null ? true : false;
 	}
-
 }
