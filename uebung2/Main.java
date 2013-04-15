@@ -27,8 +27,8 @@ public class Main{
 	 * -v (verbose mode, default is silent)<br>
 	 * -n <b>int</b> (number of queues is <b>int</b>, default is 2)<br>
 	 * -t <b>double</b> (simulation ends at time <b>double</b>, default is 300)<br>
-	 * -e simulation runs in mode equal distribution (default): new arrivals are distributed randomly over all queues.
-	 * -s simulation runs in mode shortest: new arrivals are added to the shortest present queue at creation. if tied, the queue with the lowest id is chosen.
+	 * -e simulation runs in mode equal distribution (default): new arrivals are distributed randomly over all queues.<br>
+	 * -s simulation runs in mode shortest: new arrivals are added to the shortest present queue at creation. if tied, one of the "shortest" queues is chosen at random.
 	 */
 	public static void main(String[] args) {
 		boolean verbose=VERBOSE;

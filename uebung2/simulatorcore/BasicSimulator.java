@@ -1,5 +1,6 @@
 package simulatorcore;
 import simulationmodel.*;
+import java.util.ArrayList;
 
 /**
  * a basic simulator simulating a variable number of entities
@@ -54,14 +55,24 @@ public abstract class BasicSimulator {
 
 	/**
 	 * method to find the shortest/smallest entity according to their ordering
-	 * @return the shortest queue's id. in case of multiple "shortest" queues, the lowest id is returned
+	 * @return the shortest queue's id. in case of multiple "shortest" queues, one of them is chosen randomly.
 	 */
 	public int getShortestEntityID(){
 		int shortestEntityID=0;
-		for (int i=0; i<entity.length; i++) {
-			if(getSimulationEntity(shortestEntityID).compareTo(getSimulationEntity(i))>0) shortestEntityID=i;
-		}
-		return shortestEntityID;
+		ArrayList<Integer> shortestEntities = new ArrayList<Integer>(getNumberOfEntities());
+
+		for (int i=0; i<getNumberOfEntities(); i++) {
+			if(getSimulationEntity(shortestEntityID).compareTo(getSimulationEntity(i))>=0) shortestEntityID=i;
+		} // find the lowest present queuelength
+
+		for (int i=0; i<getNumberOfEntities(); i++) {
+			if(getSimulationEntity(shortestEntityID).compareTo(getSimulationEntity(i)) == 0){
+				shortestEntities.add(i);
+			}
+		} // add the entity ids of all queues with that length to the list
+
+		shortestEntities.trimToSize();
+		return shortestEntities.get((int)(Math.random() * shortestEntities.size())); // return one of the entities' ids
 	}
 
 	/**
