@@ -15,7 +15,7 @@ public class Main{
 	/**
 	 * contains default value for simulation end
 	 */
-	public static final double SIMULATION_END = 100;
+	public static final double SIMULATION_END = 300;
 	/**
 	 * contains default value for mode
 	 */
@@ -26,8 +26,9 @@ public class Main{
 	 * @param  args accepts<br>
 	 * -v (verbose mode, default is silent)<br>
 	 * -n <b>int</b> (number of queues is <b>int</b>, default is 2)<br>
-	 * -t <b>double</b> (simulation ends at time <b>double</b>, default is 100)<br>
-	 * -m <b><0|1></b> (simulation runs in mode <b>0</b> (Equal Distribution: arrivals are randomly distributed over all queues) or <b>1</b> (Shortest: arrivals are added to the shortest queue), default is 0)
+	 * -t <b>double</b> (simulation ends at time <b>double</b>, default is 300)<br>
+	 * -e simulation runs in mode equal distribution (default): new arrivals are distributed randomly over all queues.
+	 * -s simulation runs in mode shortest: new arrivals are added to the shortest present queue at creation. if tied, the queue with the lowest id is chosen.
 	 */
 	public static void main(String[] args) {
 		boolean verbose=VERBOSE;
@@ -52,10 +53,12 @@ public class Main{
 		}
 
 		int mode = MODE;
-		i=0;
 		for (String arg : args) {
-			if(arg.equals("-m")) mode = Integer.parseInt(args[i+1]);
-			i++;
+			if(arg.equals("-e") || arg.equals("-s")){
+				if(arg.equals("-e")) mode = 0;
+				if(arg.equals("-s")) mode = 1;
+				break;
+			}
 		}
 
 		simulatorcore.Simulator simulator = new simulatorcore.Simulator(numberOfQueues, simulationEnd, verbose, mode);

@@ -68,7 +68,7 @@ public abstract class BasicSimulator {
 	 * setter method for the current simulation time
 	 * @param time time the simulation should be set to
 	 */
-	void setCurrentSimTime(double time){
+	public void setCurrentSimTime(double time){
 		currentSimTime = time;
 	}
 
@@ -85,7 +85,7 @@ public abstract class BasicSimulator {
 	 * @param entityNumber the id of the entity to be changed
 	 * @param length       the new length
 	 */
-	void setCurrentQueueLength(int entityNumber, double length){
+	protected void setCurrentQueueLength(int entityNumber, double length){
 		currentQueueLength[entityNumber] = length;
 	}
 	/**
@@ -101,7 +101,7 @@ public abstract class BasicSimulator {
 	 * setter for last probe time
 	 * @param time the timestamp lastProbeTime should be set to
 	 */
-	void setLastProbeTime(double time){
+	protected void setLastProbeTime(double time){
 		lastProbeTime = time;
 	}
 	/**
@@ -116,7 +116,7 @@ public abstract class BasicSimulator {
 	 * setter for event list
 	 * @param list the new eventlist
 	 */
-	void setEventList(IEventList list){
+	protected void setEventList(IEventList list){
 		events = list;
 	}
 	/**
@@ -132,7 +132,7 @@ public abstract class BasicSimulator {
 	 * @param entityID the id of the entity to be set
 	 * @param entity       the entity object to be integrated into the simulation
 	 */
-	void setSimulationEntity(int entityID, ISimulationEntity entity){
+	protected void setSimulationEntity(int entityID, ISimulationEntity entity){
 		this.entity[entityID] = entity;
 	}
 	/**
@@ -147,7 +147,7 @@ public abstract class BasicSimulator {
 	/**
 	 * remove the first event from the simulator's eventlist
 	 */
-	void removeFirstEvent(){
+	public void removeFirstEvent(){
 		events.removeFirstEvent();
 	}
 
@@ -155,14 +155,14 @@ public abstract class BasicSimulator {
 	 * put a new event on the simulator's eventlist
 	 * @param event [description]
 	 */
-	void putInNewEvent(IEvent event){
+	protected void putInNewEvent(IEvent event){
 		events.putAway(event);
 	}
 
 	/**
 	 * refresh all queuelengths
 	 */
-	void refreshQueueLength(){
+	protected void refreshQueueLength(){
 		double time = getCurrentSimTime() - getLastProbeTime();
 		for (int i=0; i<getNumberOfEntities(); i++){
 			currentQueueLength[i] += entity[i].getState()*time;
@@ -189,10 +189,10 @@ public abstract class BasicSimulator {
 	/**
 	 * initialise the simulator
 	 */
-	abstract void init();
+	protected abstract void init();
 	/**
 	 * run the simulation
 	 */
-	abstract void run();
+	protected abstract void run();
 
 }

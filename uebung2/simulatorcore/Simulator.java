@@ -66,11 +66,11 @@ public class Simulator extends BasicSimulator {
 			setSimulationEntity(i, new Queue());
 		}
 		if(mode==0){
-			events.putAway(new ArrivalEqualDist(this, getCurrentSimTime(), verbose));
+			events.putAway(new ArrivalEqualDist(this, Math.random()*9+1, verbose));
 			System.out.println("Mode: Equal Distribution");
 		}
 		if(mode==1){
-			events.putAway(new ArrivalShortest(this, getCurrentSimTime(), verbose));
+			events.putAway(new ArrivalShortest(this, Math.random()*9+1, verbose));
 			System.out.println("Mode: Shortest");
 		}
 	}
@@ -79,13 +79,14 @@ public class Simulator extends BasicSimulator {
 	 * run the simulation
 	 */
 	public void run(){
-		while(events.hasContent() && events.nextEvent().getExecTime() < getSimulationEnd()){
+		IEvent event = events.nextEvent();
+		while(event != null && getCurrentSimTime() < getSimulationEnd()){
 			iterations++;
-			IEvent event = events.nextEvent();
-			events.removeFirstEvent();
 			setCurrentSimTime(event.getExecTime());
 			refreshQueueLength();
 			event.eventExec(this);
+			event = events.nextEvent();
+			
 			if(verbose){
 				System.out.println("\nIteration:       " + iterations + "\nSimulation Time: " + getCurrentSimTime());
 				for(int i=0; i<getNumberOfEntities(); i++) {
