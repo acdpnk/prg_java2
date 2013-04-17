@@ -5,6 +5,10 @@ import simulationmodel.*;
  */
 public class Simulator extends BasicSimulator {
 	/**
+	 * number of queues to be simulated
+	 */
+	private int numberOfQueues;
+	/**
 	 * print debog information if true (is passed on to all other methods and classes employed)
 	 */
 	private boolean verbose;
@@ -31,7 +35,8 @@ public class Simulator extends BasicSimulator {
 	 * @param  mode           0: Arrivals are distributed randomly, 1: Arrivals are added to shortest queue
 	 */
 	public Simulator(int numberOfQueues, double end, boolean verboseness, int mode){
-		super(numberOfQueues);
+		//super(numberOfQueues);
+		this.numberOfQueues = numberOfQueues;
 		simulationEnd = end;
 		verbose = verboseness;
 		this.mode=mode;
@@ -61,10 +66,13 @@ public class Simulator extends BasicSimulator {
 		setLastProbeTime(0);
 		setCompletedJobs(0);
 		events = new EventListPQ();
-		for(int i=0; i!=getNumberOfEntities(); i++){
-			setCurrentQueueLength(i,0);
-			setSimulationEntity(i, new Queue());
+		for(int i=0; i!=numberOfQueues; i++){
+			addSimulationEntity(new Queue());
+			currentQueueLength.add(0.0);
 		}
+
+		assert getNumberOfEntities() > 0;
+
 		if(mode==0){
 			events.putAway(new ArrivalEqualDist(this, Math.random()*9+1, verbose));
 			System.out.println("Mode: Equal Distribution");

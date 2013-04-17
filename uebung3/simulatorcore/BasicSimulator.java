@@ -22,27 +22,33 @@ public abstract class BasicSimulator {
 	 * the number of completed jobs
 	 */
 	protected int completedJobs;
+	// /**
+	//  * the number of entities to be simulated
+	//  */
+	//protected int numberOfEntities;
 	/**
-	 * the number of entities to be simulated
+	 * an ArrayList containing the lengths of the simulated queues
 	 */
-	protected int numberOfEntities;
+	protected ArrayList<Double> currentQueueLength;
 	/**
-	 * an array containing the lengths of the simulated queues
+	 * an ArrayList containing the simulated entities. an entity's id is their place in the ArrayList.
 	 */
-	protected double[] currentQueueLength;
-	/**
-	 * an array containing the simulated entities. an entity's id is their place in the array.
-	 */
-	protected ISimulationEntity[] entity;
+	protected ArrayList<ISimulationEntity> entity;
+
+	// /**
+	//  * constructor for the basic simulator (deprecated, backwards compatibility only)
+	//  * @param  numberOfEntities the number of entities to be simulated
+	//  */
+	// protected BasicSimulator(int numberOfEntities){
+	// 	this.numberOfEntities = numberOfEntities;
+	// }
 
 	/**
 	 * constructor for the basic simulator
-	 * @param  numberOfEntities the number of entities to be simulated
 	 */
-	protected BasicSimulator(int numberOfEntities){
-		this.numberOfEntities = numberOfEntities;
-		currentQueueLength = new double[numberOfEntities];
-		entity = new ISimulationEntity[numberOfEntities];
+	protected BasicSimulator(){
+		currentQueueLength = new ArrayList<Double>();
+		entity = new ArrayList<ISimulationEntity>();
 	}
 
 	/**
@@ -50,7 +56,7 @@ public abstract class BasicSimulator {
 	 * @return number of entities
 	 */
 	public int getNumberOfEntities(){
-		return numberOfEntities;
+		return entity.size();
 	}
 
 	/**
@@ -71,8 +77,8 @@ public abstract class BasicSimulator {
 			}
 		} // add the entity ids of all queues with that length to the list
 
-		shortestEntities.trimToSize();
-		return shortestEntities.get((int)(Math.random() * shortestEntities.size())); // return one of the entities' ids
+		//shortestEntities.trimToSize();
+		return shortestEntities.get((int)(Math.random() * shortestEntities.size())); // return one of the entities' ids at random
 	}
 
 	/**
@@ -97,7 +103,7 @@ public abstract class BasicSimulator {
 	 * @param length       the new length
 	 */
 	protected void setCurrentQueueLength(int entityNumber, double length){
-		currentQueueLength[entityNumber] = length;
+		currentQueueLength.set(entityNumber, length);
 	}
 	/**
 	 * getter for queue lengths
@@ -105,7 +111,7 @@ public abstract class BasicSimulator {
 	 * @return              the entity's length
 	 */
 	public double getCurrentQueueLength(int entityNumber){
-		return currentQueueLength[entityNumber];
+		return currentQueueLength.get(entityNumber);
 	}
 
 	/**
@@ -144,15 +150,24 @@ public abstract class BasicSimulator {
 	 * @param entity       the entity object to be integrated into the simulation
 	 */
 	protected void setSimulationEntity(int entityID, ISimulationEntity entity){
-		this.entity[entityID] = entity;
+		this.entity.set(entityID, entity);
 	}
+
+	/**
+	 * appendss an entity to the list of entities to be simulated. for sequential network simulation.
+	 * @param entity the entity object to be integrated into the simualtion.
+	 */
+	protected void addSimulationEntity(ISimulationEntity entity){
+		this.entity.add(entity);
+	}
+
 	/**
 	 * getter for simulation entities
 	 * @param  entityID the id of the entity to get
 	 * @return          the entity
 	 */
 	public ISimulationEntity getSimulationEntity(int entityID){
-		return this.entity[entityID];
+		return entity.get(entityID);
 	}
 
 	/**
@@ -176,7 +191,8 @@ public abstract class BasicSimulator {
 	protected void refreshQueueLength(){
 		double time = getCurrentSimTime() - getLastProbeTime();
 		for (int i=0; i<getNumberOfEntities(); i++){
-			currentQueueLength[i] += entity[i].getState()*time;
+			// getCurrentQueueLength(i) += getSimulationEntity(i).getState()*time;
+			setCurrentQueueLength(i, getCurrentQueueLength(i)+(getSimulationEntity(i).getState()*time));
 		}
 		setLastProbeTime(getCurrentSimTime());
 	}
