@@ -1,11 +1,11 @@
 package simulationmodel;
 /**
- * a queue containing a number of waiting jobs (Warteschlange)
+ * a queue containing a number of waiting jobs
  */
 public class Queue implements ISimulationEntity, Comparable<ISimulationEntity>{
 	private int jobs;
 	/**
-	 * getter for the Queue's state (getZustand())
+	 * getter for the Queue's state
 	 * @return number of waiting jobs
 	 */
 	public int getState(){
@@ -13,7 +13,7 @@ public class Queue implements ISimulationEntity, Comparable<ISimulationEntity>{
 	}
 
 	/**
-	 * setter for the Queue's state (setZustand())
+	 * setter for the Queue's state
 	 * @param newState the new number of jobs in line
 	 */
 	public void setState(int newState){

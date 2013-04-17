@@ -23,13 +23,13 @@ public class Simulator extends BasicSimulator {
 	 */
 	private int mode; // 0=Equal Distribution; 1=Shortest
 
-/**
- * constructor for the simulator
- * @param  numberOfQueues the number of queues to simulate
- * @param  end            the end time of the simulation
- * @param  verboseness    prints additional debug info if true
- * @param  mode           0: Arrivals are distributed randomly, 1: Arrivals are added to shortest queue
- */
+	/**
+	 * constructor for the simulator
+	 * @param  numberOfQueues the number of queues to simulate
+	 * @param  end            the end time of the simulation
+	 * @param  verboseness    prints additional debug info if true
+	 * @param  mode           0: Arrivals are distributed randomly, 1: Arrivals are added to shortest queue
+	 */
 	public Simulator(int numberOfQueues, double end, boolean verboseness, int mode){
 		super(numberOfQueues);
 		simulationEnd = end;
@@ -86,7 +86,7 @@ public class Simulator extends BasicSimulator {
 			refreshQueueLength();
 			event.eventExec(this);
 			event = events.nextEvent();
-			
+
 			if(verbose){
 				System.out.println("\nIteration:       " + iterations + "\nSimulation Time: " + getCurrentSimTime());
 				for(int i=0; i<getNumberOfEntities(); i++) {
