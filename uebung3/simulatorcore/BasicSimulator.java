@@ -27,6 +27,10 @@ public abstract class BasicSimulator {
 	//  */
 	//protected int numberOfEntities;
 	/**
+	 * for sequential simulations: the rate at which new jobs arrive in queue0
+	 */
+	protected double arrivalRate;
+	/**
 	 * an ArrayList containing the lengths of the simulated queues
 	 */
 	protected ArrayList<Double> currentQueueLength;
