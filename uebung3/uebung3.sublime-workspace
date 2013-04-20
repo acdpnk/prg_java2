@@ -3,19 +3,79 @@
 	{
 		"selected_items":
 		[
+			[
+				"get",
+				"getQueueID"
+			],
+			[
+				"De",
+				"DepartureSeq"
+			],
+			[
+				"ad",
+				"add(Integer)	boolean"
+			],
+			[
+				"number",
+				"numberOfQueues"
+			],
+			[
+				"num",
+				"numberOfQueues"
+			],
+			[
+				"setC",
+				"setCurrentQueueLength"
+			],
+			[
+				"e",
+				"entity"
+			],
+			[
+				"en",
+				"entityID"
+			],
+			[
+				"to",
+				"toString()	String"
+			],
+			[
+				"pr",
+				"println()	void"
+			],
+			[
+				"a",
+				"add(Integer)	boolean"
+			],
+			[
+				"Arr",
+				"ArrayList	class"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "simulationmodel/DepartureSeq.java",
+			"settings":
+			{
+				"buffer_size": 1599,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 330.0,
 		"selected_items":
 		[
 			[
-				"pro",
+				"close",
+				"Project: Close"
+			],
+			[
+				"clos",
 				"Project: Close"
 			],
 			[
@@ -23,12 +83,32 @@
 				"Package Control: Install Package"
 			],
 			[
-				"insta",
-				"Package Control: Install Package"
+				"fold",
+				"Code Folding: Fold Tag Attributes"
 			],
 			[
 				"ins",
 				"Package Control: Install Package"
+			],
+			[
+				"fo",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"fol",
+				"Code Folding: Unfold All"
+			],
+			[
+				"",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pro",
+				"Project: Close"
 			],
 			[
 				"instal",
@@ -64,6 +144,19 @@
 	},
 	"file_history":
 	[
+		"/home/mrnda/Prg2_java/uebung3/uebung3.sublime-project",
+		"/home/mrnda/Prg2_java/uebung3/simulationmodel/DepartureSeq.java",
+		"/home/mrnda/Prg2_java/uebung3/uebung3.sublime-workspace",
+		"/home/mrnda/Prg2_java/uebung3/simulatorcore/BasicSimulator.java",
+		"/home/mrnda/Prg2_java/uebung3/simulatorcore/Simulator.java",
+		"/home/mrnda/prg_java2/uebung3/simulatorcore/BasicSimulator.java",
+		"/home/mrnda/prg_java2/uebung3/simulationmodel/QueueSeq.java",
+		"/home/mrnda/prg_java2/uebung3/QueueSeq.java",
+		"/home/mrnda/prg_java2/uebung3/simulationmodel/Queue.java",
+		"/home/mrnda/prg_java2/uebung3/simulatorcore/Simulator.java",
+		"/home/mrnda/prg_java2/uebung3/simulationmodel/ArrivalEqualDist.java",
+		"/home/mrnda/prg_java2/uebung3/test.java",
+		"/home/mrnda/prg_java2/uebung3/foo.erl",
 		"/home/mrnda/prg_java2/uebung3/uebung3.sublime-workspace",
 		"/home/mrnda/prg_java2/uebung2/uebung2.sublime-project",
 		"/home/mrnda/prg_java2/uebung3/uebung3.sublime-project",
@@ -72,7 +165,7 @@
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -86,6 +179,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"simulator",
+			"double",
+			"array"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -103,8 +199,36 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "simulationmodel/DepartureSeq.java",
+					"settings":
+					{
+						"buffer_size": 1599,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -139,6 +263,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 130.0
+	},
 	"replace":
 	{
 		"height": 0.0

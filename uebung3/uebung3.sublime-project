@@ -2,7 +2,8 @@
 	"folders":
 	[
 		{
-			"path":"/home/mrnda/prg_java2/uebung3/"
+			"path": "/home/mrnda/Prg2_java/uebung3",
+			"file_exclude_patterns": ["*.class"]
 		}
 	]
 }
