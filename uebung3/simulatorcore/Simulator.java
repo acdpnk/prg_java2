@@ -9,7 +9,7 @@ public class Simulator extends BasicSimulator {
 	 */
 	private int numberOfQueues;
 	/**
-	 * print debog information if true (is passed on to all other methods and classes employed)
+	 * print debug information if true (is passed on to all other methods and classes employed)
 	 */
 	private boolean verbose;
 	/**
@@ -56,6 +56,14 @@ public class Simulator extends BasicSimulator {
 	 */
 	public int getMode(){
 		return mode;
+	}
+
+	/**
+	 * setter vor verboseness
+	 * @param verboseness prints debug info if true
+	 */
+	protected void setVerboseness(boolean verboseness){
+		verbose = verboseness;
 	}
 
 	/**
