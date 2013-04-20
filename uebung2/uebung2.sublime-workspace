@@ -143,6 +143,10 @@
 		"selected_items":
 		[
 			[
+				"pro",
+				"Project: Close"
+			],
+			[
 				"cl",
 				"Project: Close"
 			],
@@ -228,6 +232,7 @@
 	},
 	"file_history":
 	[
+		"/home/mrnda/prg_java2/uebung2/Main.java",
 		"/home/mrnda/prg_java2/uebung2/simulationmodel/ArrivalEqualDist.java",
 		"/home/mrnda/prg_java2/uebung2/simulationmodel/Arrival.java",
 		"/home/mrnda/prg_java2/uebung2/simulationmodel/Departure.java",
@@ -240,7 +245,6 @@
 		"/home/mrnda/prg_java2/uebung2/simulationmodel/ArrivalShortest.java",
 		"/home/mrnda/prg_java2/uebung2/simulationmodel/Event.java",
 		"/home/mrnda/prg_java2/uebung2/simulationmodel/IEvent.java",
-		"/home/mrnda/prg_java2/uebung2/Main.java",
 		"/home/mrnda/prg_java2/uebung2/test.java",
 		"/home/mrnda/prg_java2/uebung2/ArrivalEqualDist.java",
 		"/home/mrnda/prg_java2/uebung2/uebung2.sublime-workspace",
