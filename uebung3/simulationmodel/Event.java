@@ -53,4 +53,7 @@ public abstract class Event implements IEvent, Comparable<IEvent>{
 		}
 		return 0;
 	}
+	public double jitter(double time) {
+	return time*(Math.random()*0.5 + 0.75);
+	}
 }
