@@ -53,15 +53,21 @@ public class Main{
 		}
 
 		int mode = MODE;
+		i=0;
 		for (String arg : args) {
-			if(arg.equals("-e") || arg.equals("-s")){
+			if(arg.equals("-e") || arg.equals("-s") || arg.equals("-f")){
 				if(arg.equals("-e")) mode = 0;
 				if(arg.equals("-s")) mode = 1;
+				if(arg.equals("-f")){
+					mode = 2;
+					String file = args[i+1];
+				}
 				break;
 			}
 		}
+		if(mode == 0 || mode == 1) simulatorcore.Simulator simulator = new simulatorcore.Simulator(numberOfQueues, simulationEnd, verbose, mode);
+		if(mode == 2) simulatorcore.SimulatorSeq simulator = simulatorcore.SimulatorSeq(file, simulationEnd, verbose, mode);
 
-		simulatorcore.Simulator simulator = new simulatorcore.Simulator(numberOfQueues, simulationEnd, verbose, mode);
 		simulator.init();
 		simulator.run();
 	}
