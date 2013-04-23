@@ -13,13 +13,16 @@ public abstract class Event implements IEvent, Comparable<IEvent>{
 	 */
 	protected int queueID;
 
+	protected double execTime;
+
 	/**
 	 * an event.
 	 * @param  queueID     queue the event belongs to.
 	 * @param  verboseness prints debog information if true.
 	 */
-	public Event(int queueID, boolean verboseness){
+	public Event(int queueID, double execTime, boolean verboseness){
 		this.queueID=queueID;
+		this.execTime=execTime;
 		this.verbose=verboseness;
 	}
 
@@ -39,6 +42,10 @@ public abstract class Event implements IEvent, Comparable<IEvent>{
 		this.queueID=queueID;
 	}
 
+	public double getExecTime(){
+		return execTime;
+	}
+
 	/**
 	 * events are comparable by their execution time.
 	 * @param  event the other event to compare this event to
@@ -53,7 +60,7 @@ public abstract class Event implements IEvent, Comparable<IEvent>{
 		}
 		return 0;
 	}
-	public double jitter(double time) {
+	public static double jitter(double time) {
 	return time*(Math.random()*0.5 + 0.75);
 	}
 }

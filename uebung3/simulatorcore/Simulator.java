@@ -11,7 +11,7 @@ public class Simulator extends BasicSimulator {
 	/**
 	 * print debug information if true (is passed on to all other methods and classes employed)
 	 */
-	private boolean verbose;
+	protected boolean verbose;
 	/**
 	 * time at which the simulation should end
 	 */

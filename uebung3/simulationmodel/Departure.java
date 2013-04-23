@@ -33,6 +33,7 @@ public class Departure extends Event {
 	 * @param simulator the simulator the departure should affect
 	 */
 	public void eventExec(simulatorcore.BasicSimulator simulator){
+		System.out.println("why? :<");
 		simulator.removeFirstEvent();
 		if(verbose) System.out.println("\n\nDeparture from Queue " + getQueueID() + " at " + getExecTime());
 		if(simulator.getSimulationEntity(getQueueID()).getState() > 1){

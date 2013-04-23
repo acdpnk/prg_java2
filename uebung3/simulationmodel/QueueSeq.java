@@ -4,7 +4,7 @@ public class QueueSeq extends Queue{
 	private String name;
 	private double serviceRate;
 
-	private QueueSeq(String name, double rate){
+	public QueueSeq(String name, double rate){
 		this.name = name;
 		this.serviceRate = rate;
 	}

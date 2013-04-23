@@ -33,6 +33,8 @@ public abstract class BasicSimulator {
 	/**
 	 * an ArrayList containing the lengths of the simulated queues
 	 */
+	protected int numberOfEntities;
+
 	protected ArrayList<Double> currentQueueLength;
 	/**
 	 * an ArrayList containing the simulated entities. an entity's id is their place in the ArrayList.
@@ -60,7 +62,11 @@ public abstract class BasicSimulator {
 	 * @return number of entities
 	 */
 	public int getNumberOfEntities(){
+		if(numberOfEntities != 0) return numberOfEntities;
 		return entity.size();
+	}
+	public void setNumberOfEntities(int number){
+		numberOfEntities = number;
 	}
 
 	/**
@@ -215,6 +221,14 @@ public abstract class BasicSimulator {
 	 */
 	public int getCompletedJobs(){
 		return this.completedJobs;
+	}
+
+		public void setArrivalRate(double rate){
+		arrivalRate = rate;
+	}
+
+	public double getArrivalRate(){
+		return arrivalRate;
 	}
 
 	/**

@@ -2,6 +2,8 @@
  * contains main method, entry point for the program.
  */
 public class Main{
+	private static String file;
+	private static simulatorcore.SimulatorSeq simulator;
 
 	//default values for optional commandline arguments
 	/**
@@ -15,11 +17,11 @@ public class Main{
 	/**
 	 * contains default value for simulation end
 	 */
-	public static final double SIMULATION_END = 300;
+	public static final double SIMULATION_END = 15000;
 	/**
 	 * contains default value for mode
 	 */
-	public static final int MODE = 0; // equal distribution
+	public static final int MODE = 2; // equal distribution
 
 	/**
 	 * Initializes and starts the simulation.
@@ -60,14 +62,18 @@ public class Main{
 				if(arg.equals("-s")) mode = 1;
 				if(arg.equals("-f")){
 					mode = 2;
-					String file = args[i+1];
+					file = args[i+1];
 				}
 				break;
 			}
+			i++;
 		}
-		if(mode == 0 || mode == 1) simulatorcore.Simulator simulator = new simulatorcore.Simulator(numberOfQueues, simulationEnd, verbose, mode);
-		if(mode == 2) simulatorcore.SimulatorSeq simulator = simulatorcore.SimulatorSeq(file, simulationEnd, verbose, mode);
-
+		// if(mode == 0 || mode == 1) {
+		// 	simulator = new simulatorcore.Simulator(numberOfQueues, simulationEnd, verbose, mode);
+		// }
+		if(mode == 2) {
+			simulator = new simulatorcore.SimulatorSeq(file, simulationEnd, verbose, mode);
+		}
 		simulator.init();
 		simulator.run();
 	}

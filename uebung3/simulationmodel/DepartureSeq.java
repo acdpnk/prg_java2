@@ -1,15 +1,14 @@
 package simulationmodel;
 
-import simulatorcore.BasicSimulator;
+import simulatorcore.SimulatorSeq;
 
-public class DepartureSeq extends Departure{
+public class DepartureSeq extends Event{
 	protected DepartureSeq(int queueID, double execTime, boolean verboseness){
 		super(queueID, execTime, verboseness);
 	}
 
-	public void eventExec(simulatorcore.BasicSimulator simulator){
-
-		ISimulationEntity thisEntity = simulator.getSimulationEntity(getQueueID());
+	public void eventExec(simulatorcore.SimulatorSeq simulator){
+		QueueSeq thisEntity = simulator.getSimulationEntity(getQueueID());
 
 		simulator.removeFirstEvent();
 
@@ -17,16 +16,15 @@ public class DepartureSeq extends Departure{
 
 		thisEntity.setState(thisEntity.getState()-1);
 
-		if(thisEntity.getState() > 0) simulator.getEventList().putAway(new DepartureSeq(getQueueID(), getCurrentSimTime() + jitter(thisEntity.getServiceRate()), verbose));
-
+		if(thisEntity.getState() > 0) simulator.getEventList().putAway(new DepartureSeq(getQueueID(), simulator.getCurrentSimTime() + jitter(1/thisEntity.getServiceRate()), verbose));
 
 		if (getQueueID()+1 < simulator.getNumberOfEntities()){
-			ISimulationEntity nextEntity = simulator.getSimulationEntity(getQueueID() + 1);
+			QueueSeq nextEntity = simulator.getSimulationEntity(getQueueID() + 1);
 
 			nextEntity.setState(nextEntity.getState() + 1);
 
 			if (nextEntity.getState() == 1) {
-				simulator.getEventList().putAway(new DepartureSeq(getQueueID()+1, getCurrentSimTime()+jitter(nextEntity.getServiceRate()), verbose));
+				simulator.getEventList().putAway(new DepartureSeq(getQueueID()+1, simulator.getCurrentSimTime()+jitter(1/nextEntity.getServiceRate()), verbose));
 			}
 		}
 		else {

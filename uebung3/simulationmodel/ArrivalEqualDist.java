@@ -15,9 +15,9 @@ public class ArrivalEqualDist extends Arrival{
 
 	public void eventExec(simulatorcore.BasicSimulator simulator){
 		simulator.removeFirstEvent();
-		
+
 		if(verbose) System.out.println("\n\nArrival in Queue " + getQueueID() + " at " + getExecTime());
-		
+
 		double arrivalTime = simulator.getCurrentSimTime() + (Math.random()*9) + 1;
 
 		simulator.getEventList().putAway(new ArrivalEqualDist(simulator, arrivalTime, verbose));

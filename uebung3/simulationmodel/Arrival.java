@@ -4,7 +4,7 @@ package simulationmodel;
  */
 public class Arrival extends Event {
 	/**
-	 * 
+	 *
 	 */
 	private double execTime;
 
@@ -40,7 +40,7 @@ public class Arrival extends Event {
 		simulator.getEventList().putAway(new Arrival(arrivalTime, verbose));
 		if(verbose) System.out.println("adding new Arrival to Queue " + getQueueID() + " at " + arrivalTime);
 		if (simulator.getSimulationEntity(getQueueID()).getState() == 1) {  //should only occur when jobs was empty
-			double departureTime = arrivalTime + (Math.random()*5 + 1);
+			double departureTime = simulator.getCurrentSimTime() + (Math.random()*5 + 1);
 			simulator.getEventList().putAway(new Departure(departureTime, verbose));
 			if(verbose) System.out.println("adding new Departure to Queue at " + departureTime);
 		}
