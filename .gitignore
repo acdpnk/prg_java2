@@ -4,3 +4,6 @@
 *.zip
 *.jar
 /uebung1/muster
+*.txt
+*.model
+
