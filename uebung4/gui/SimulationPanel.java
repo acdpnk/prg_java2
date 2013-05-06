@@ -50,7 +50,7 @@ public class SimulationPanel extends JPanel {
 			}
 		});
 
-		textArea = new JTextArea("result", 25, 30);
+		textArea = new JTextArea("your result appears here.", 25, 30);
 		scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		textArea.setLineWrap(true);
 		textArea.setEditable(false);

@@ -19,6 +19,10 @@ public class ModelPanel extends JPanel {
 		return app;
 	}
 
+	public void setLabelText(String text){
+		label.setText(text);
+	}
+
 	public ModelPanel(Application app, boolean debug){
 		super();
 
@@ -74,7 +78,7 @@ public class ModelPanel extends JPanel {
 			}
 		});
 
-		textArea = new JTextArea(25, 30);
+		textArea = new JTextArea("%put in the model you want to simulate here.\n%comment start with %\n%an example to get you started:\n%arrival rate (in arrivals per time unit)\n2.0\n\n%first queue, service rate (in jobs per time unit)\nqueue1 2.2\n%second queue, service rate\nqueue2 1.8", 25, 30);
 		scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		textArea.setLineWrap(true);
 		textArea.setEditable(true);

@@ -19,6 +19,10 @@ public class MenuBar extends JMenuBar{
 		this.debug = debug;
 		this.app = app;
 
+		// if(debug){
+		// 	setBackground(Color.YELLOW);
+		// }
+
 		menu = new JMenu("simulation");
 
 		help = new JMenuItem("help");
