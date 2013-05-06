@@ -1,0 +1,14 @@
+%Modell eines Festivalbesuchs
+%Alle Zeitangaben sind Mittelwerte, die
+%tatsächlichen Zeiten weichen +- 25 Prozent ab. 
+%ankommende Besucher: alle 0.5 min
+2.0
+
+%nochn kommentar
+
+%die ersten Stationen eines Besuchers:
+
+Einlass 2.5
+Wurstbude 2.2
+Bierstand 4.3
+Klo 3.2

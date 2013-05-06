@@ -108,4 +108,17 @@ public class ModelPanel extends JPanel {
 	public JTextArea getTextArea(){
 		return textArea;
 	}
+	public File getModel(){
+		File model = new File("model");
+		try{
+			BufferedWriter writer = new BufferedWriter(new FileWriter(model));
+			textArea.write(writer);
+			writer.close();
+			textArea.requestFocus();
+		}
+		catch(Exception e){
+			System.out.println(e + "\ncould not open file.");
+		}
+		return model;
+	}
 }

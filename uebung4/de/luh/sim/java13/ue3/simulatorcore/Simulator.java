@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package de.luh.sim.java13.ue3.simulatorcore;
 
@@ -18,7 +18,7 @@ import de.luh.sim.java13.ue3.simulationmodel.Warteschlange;
 
 /**
  * @author Ronald
- * 
+ *
  */
 public class Simulator extends BasicSimulator {
 
@@ -27,6 +27,12 @@ public class Simulator extends BasicSimulator {
 	private boolean debug;
 
 	private File file;
+
+	private File resultFile;
+
+	public File getResultFile(){
+		return resultFile;
+	}
 
 	public Simulator(boolean debug, int simulationLength, File file) {
 		super();
@@ -38,7 +44,7 @@ public class Simulator extends BasicSimulator {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see de.luh.sim.java09.ue08.BasicSimulator#init()
 	 */
 	@Override
@@ -73,12 +79,12 @@ public class Simulator extends BasicSimulator {
 			e.printStackTrace();
 			System.out.println("Datei konnte nicht gelesen werden!");
 			System.out.println("Beende Simulation");
-			System.exit(0);
+			// System.exit(0);
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 			System.out.println("Ankunftsrate nicht lesbar");
 			System.out.println("Beende Simulation");
-			System.exit(0);
+			// System.exit(0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -87,7 +93,7 @@ public class Simulator extends BasicSimulator {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see de.luh.sim.java09.ue08.BasicSimulator#run()
 	 */
 	@Override
@@ -117,12 +123,13 @@ public class Simulator extends BasicSimulator {
 			}
 		}
 		aktualisiereWarteschlangenlaenge();
-		
+
 		try {
 			String ergebnisname = file.getAbsolutePath();
 			ergebnisname = ergebnisname.substring(0, ergebnisname.length() - 6);
-			ergebnisname += "_Simulationsergebnis.txt"; 
-			FileWriter fw = new FileWriter(new File(ergebnisname), false);
+			ergebnisname += "_Simulationsergebnis.txt";
+			resultFile = new File(ergebnisname);
+			FileWriter fw = new FileWriter(resultFile, false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.append("Simulierte Zeit: " + simulationszeit + "\n \n");
 			bw.append("%Kenngrößen der Warteschlangen \n");
@@ -132,7 +139,7 @@ public class Simulator extends BasicSimulator {
 								+ simulationsEntity.get(i).getName()
 								+ ": "
 								+ (summeWarteschlangenlaenge.get(i) / simulationszeit));
-				bw.append(simulationsEntity.get(i).getName() + " " + simulationsEntity.get(i).getBedienrate() 
+				bw.append(simulationsEntity.get(i).getName() + " " + simulationsEntity.get(i).getBedienrate()
 						+ " "
 						+ (summeWarteschlangenlaenge.get(i) / simulationszeit) + "\n");
 			}
@@ -149,7 +156,7 @@ public class Simulator extends BasicSimulator {
 			bw.append("WIP " + umlaufbestand + "\n" );
 			System.out.println("Durchlaufzeit " + umlaufbestand / durchsatz);
 			bw.append("DLZ " + umlaufbestand / durchsatz);
-			
+
 			bw.close();
 			fw.close();
 		} catch (IOException e) {

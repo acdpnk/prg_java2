@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.FlowLayout;
 import java.awt.Color;
+import de.luh.sim.java13.ue3.simulatorcore.Simulator;
 
 public class ControlPanel extends JPanel{
 	Application app;
@@ -23,8 +24,13 @@ public class ControlPanel extends JPanel{
 		startSimButton = new JButton("run simulation");
 		startSimButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
+				final Application fapp = getApp();
+
 				int time = Integer.parseInt(simTimeField.getText());
-				app.setSimulator(new simulatorcore.SimulatorSeq());
+				fapp.setSimulator(new Simulator(true, time, fapp.getModel()));
+				fapp.getSimulator().init();
+				fapp.getSimulator().run();
+				fapp.setSimPanelTextArea(fapp.getSimulator().getResultFile());
 			}
 		});
 

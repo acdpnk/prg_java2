@@ -74,12 +74,18 @@ public class SimulationPanel extends JPanel {
 		this(app, false);
 	}
 
-	public JButton getSaveButton(){
-		return saveButton;
+	public void setTextArea(File file){
+		try{
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			textArea.read(reader, null);
+			reader.close();
+			saveButton.requestFocus();
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
 	}
-	public JButton getLoadButton(){
-		return loadButton;
-	}
+
 	public JTextArea getTextArea(){
 		return textArea;
 	}
