@@ -1,8 +1,9 @@
+package gui;
+
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.BorderLayout;
-import de.luh.sim.java13.ue3.simulatorcore.Simulator;
 
 public class Application extends JFrame{
 	ModelPanel modelPanel;
@@ -12,10 +13,10 @@ public class Application extends JFrame{
 	String currentModelName;
 	MenuBar menuBar;
 
-	Simulator simulator;
+	simulatorcore.SimulatorSeq simulator;
 
-	public Simulator getSimulator() {return this.simulator;}
-	public void setSimulator(Simulator sim) {this.simulator = sim;}
+	public simulatorcore.SimulatorSeq getSimulator() {return this.simulator;}
+	public void setSimulator(simulatorcore.SimulatorSeq sim) {this.simulator = sim;}
 
 	public String getCurrentModelName() {return currentModelName;}
 	public void setCurrentModelName(String name) {currentModelName = name;}
@@ -58,7 +59,4 @@ public class Application extends JFrame{
 		this(false);
 	}
 
-	public static void main(String[] args) {
-		Application app = new Application();
-	}
 }

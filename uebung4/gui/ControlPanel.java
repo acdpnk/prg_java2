@@ -1,3 +1,5 @@
+package gui;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.FlowLayout;
@@ -22,7 +24,7 @@ public class ControlPanel extends JPanel{
 		startSimButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
 				int time = Integer.parseInt(simTimeField.getText());
-
+				app.setSimulator(new simulatorcore.SimulatorSeq());
 			}
 		});
 
