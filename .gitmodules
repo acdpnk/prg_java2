@@ -1,0 +1,3 @@
+[submodule "kalaha_project"]
+	path = kalaha_project
+	url = git@github.com:OpiumSmoke/kalaha_project.git
